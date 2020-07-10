@@ -1,0 +1,33 @@
+name: 'update-container-description-action'
+description: 'github action to update the description of a container repo from a README file (Docker Hub, Harbor, Quay)'
+inputs:
+  destination_container_repo:
+    description: 'the destination container repo (i.e. my-user/my-repo or myserver.com/my-user/my-repo)'
+    required: true
+  provider:
+    description: 'repo provider type (dockerhub, quay, harbor2)'
+    required: false
+    default: 'dockerhub'
+  short_description:
+    description: 'Dockerhub only: Set or update the repo short description'
+    default: ''
+    required: false
+  readme_file:
+    description: 'Path to the source README file'
+    default: 'README.md'
+    required: false
+runs:
+  using: 'docker'
+  image: 'docker://docker.io/chko/docker-pushrm:1'
+  args:
+    - '--provider'
+    - '${{ inputs.provider }}'
+    - '--short'
+    - '${{ inputs.short_description }}'
+    - '--file'
+    - '${{ inputs.readme_file }}'
+    - '--debug'
+    - '${{ inputs.destination_container_repo }}'
+branding:
+  icon: 'file-text'
+  color: 'green'
