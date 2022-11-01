@@ -133,14 +133,5 @@ Defaults to `./README.md` when not set.
 
 none (just succeeds or fails)
 
-# Limitations
-
-### Conflict with Dockerhub personal access tokens and 2FA auth
-
-Pushing READMEs to Dockerhub currently only works with username/password and **not** with [personal access tokens](https://docs.docker.com/docker-hub/access-tokens/). If you have [2FA auth](https://docs.docker.com/docker-hub/2fa/) (two-factor authentication) enabled for your Dockerhub account you're effectively using a personal access token. This is an unfortunate Dockerhub API limitation.
-
-There are indications (in issues and forum posts) that a new API for Dockerhub might be coming up sooner or later that might fill this gap. Fingers crossed. 🤞
-
-
 ----
 All trademarks belong to their respective owners.
